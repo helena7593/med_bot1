@@ -1,7 +1,7 @@
 import telebot
 from telebot import types
 
-API_TOKEN = "8166107199:AAH7jqM6VbFPg2lBvQ6b5mbp9bXkhpCUlOM"
+API_TOKEN = ""
 bot = telebot.TeleBot(API_TOKEN)
 
 class Doctor:
