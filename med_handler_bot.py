@@ -108,7 +108,7 @@ def confirm_booking(message):
         f"Patient: {current_first_name} {current_last_name}\n"
         f"Phone: {current_phone}",
     )
-
+#r
 
 
 if __name__ == "__main__":
