@@ -12,6 +12,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Set PYTHONPATH
+          command: echo 'export PYTHONPATH=$PYTHONPATH:/home/circleci/project' >> $BASH_ENV
+      - run:
           name: Install dependencies
           command: |
             python -m venv venv

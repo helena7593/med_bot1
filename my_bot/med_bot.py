@@ -1,8 +1,10 @@
 import telebot
+import os
 from telebot import types
 
-API_TOKEN = "8166107199:AAH7jqM6VbFPg2lBvQ6b5mbp9bXkhpCUlOM"
-bot = telebot.TeleBot(API_TOKEN)
+
+api_token=os.getenv('API_TOKEN')
+bot = telebot.TeleBot(api_token)
 
 class Doctor:
     def __init__(self, name, schedule):

@@ -1,5 +1,4 @@
-import pytest
-from med_bot import Dentist, Therapist, Cardiologist
+from my_bot.med_bot import Dentist, Cardiologist
 
 def test_doctor_booking_via_subclass():
     dentist = Dentist()
