@@ -1,13 +1,8 @@
 import telebot
 from telebot import types
-from dotenv import dotenv_values
-from database import initialize_database, add_appointment
 
-
-config=dotenv_values(".env")
-API_TOKEN=config['API_TOKEN']
+API_TOKEN = "8166107199:AAH7jqM6VbFPg2lBvQ6b5mbp9bXkhpCUlOM"
 bot = telebot.TeleBot(API_TOKEN)
-
 
 class Doctor:
     def __init__(self, name, schedule):
@@ -20,16 +15,13 @@ class Doctor:
             return True
         return False
 
-
 class Dentist(Doctor):
     def __init__(self):
         super().__init__("Dentist", ["10:00", "11:00", "12:00"])
 
-
 class Therapist(Doctor):
     def __init__(self):
         super().__init__("Therapist", ["13:00", "14:00", "15:00"])
-
 
 class Cardiologist(Doctor):
     def __init__(self):
@@ -45,7 +37,6 @@ current_first_name = None
 current_last_name = None
 current_phone = None
 
-initialize_database()
 @bot.message_handler(commands=["start"])
 def start(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -108,13 +99,6 @@ def confirm_booking(message):
     global current_phone, current_doctor, current_time, current_first_name, current_last_name
     current_phone = message.text
 
-    add_appointment(
-        doctor_name=current_doctor.name,
-        time=current_time,
-        first_name=current_first_name,
-        last_name=current_last_name,
-        phone=current_phone,
-    )
 
     bot.send_message(
         message.chat.id,
@@ -124,12 +108,8 @@ def confirm_booking(message):
         f"Patient: {current_first_name} {current_last_name}\n"
         f"Phone: {current_phone}",
     )
+#r
 
-    current_doctor = None
-    current_time = None
-    current_first_name = None
-    current_last_name = None
-    current_phone = None
 
 if __name__ == "__main__":
     bot.polling()
