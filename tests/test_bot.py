@@ -4,7 +4,8 @@ def test_doctor_booking_via_subclass():
     dentist = Dentist()
     assert dentist.name == "Dentist"
     assert dentist.schedule == ["10:00", "11:00", "12:00"]
-
+def test_doctor_time():
+    dentist = Dentist()
     assert dentist.book_time("10:00") == True
     assert "10:00" not in dentist.schedule
 
