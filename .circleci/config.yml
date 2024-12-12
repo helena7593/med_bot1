@@ -15,6 +15,13 @@ jobs:
           name: Set PYTHONPATH
           command: echo 'export PYTHONPATH=$PYTHONPATH:/home/circleci/project' >> $BASH_ENV
       - run:
+          name: Create .env file
+          command: |
+            echo "API_TOKEN=${API_TOKEN}" > .env
+            echo ".env file content:"
+            cat .env
+          when: always
+      - run:
           name: Install dependencies
           command: |
             python -m venv venv
